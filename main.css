@@ -5,4 +5,7 @@ body {
 footer {
 	position: absolute;
 	bottom: 0;
+	background-color: #EEE;
+	padding: 10px;
+	border-top-right-radius: 15px;
 }
