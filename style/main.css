@@ -1,3 +1,7 @@
+/* Import et Variables*/
+
+
+/* Tags HTML5 */
 body {
 	margin: 0;
 }
@@ -9,3 +13,17 @@ footer {
 	padding: 10px;
 	border-top-right-radius: 15px;
 }
+
+/* Classes */
+.background {
+	background-image: url('/media/images/background.png');
+	height: 300px;
+	width: 300px;
+}
+
+.up-arrow {
+	color: red;
+	font-weight: bold;
+}
+
+/* IDs */
