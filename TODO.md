@@ -7,6 +7,9 @@
 + Systeme de High Score de session (high score qui se réinitialise lors d'un refresh de page)
 + Integrer la charte graphique faite par Steven
 + Message récapitulatif de la partie a la mort
++ Classe pour les pipes afin d'afficher plusieurs pipe en meme temps via un array.
++ Fonction pour génerer aléatoirement les pipes
++ Fonction pour décharger les pipes qui sortent de l'écran sur la gauche.
 <!-- + Faire le revenir le pipe du bas -->
 
 ## Bonus
