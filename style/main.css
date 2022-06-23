@@ -17,6 +17,12 @@ footer {
 
 
 /* Classes */
+.about-link {
+    text-decoration: none;
+    font-family: sans-serif;
+    color: black;
+    font-weight: bold;
+}
 
 .background {
     background-image: url('/media/images/background.png');
