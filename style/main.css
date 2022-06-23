@@ -15,12 +15,14 @@ footer {
     border-top-right-radius: 15px;
 }
 
+
 /*canvas {
     border: 3px solid red;
 }*/
 
 
 /* Classes */
+
 .about-link {
     text-decoration: none;
     font-family: sans-serif;
@@ -74,6 +76,7 @@ footer {
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 9px;
+    z-index: 100;
 }
 
 .score {
@@ -110,7 +113,8 @@ footer {
     position: fixed;
     z-index: 10;
     top: 0;
-}   
+}
+
 
 /* media query */
 
