@@ -4,18 +4,44 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/style/about.css">
+	<script type="text/javascript" src="/script/about.js" defer></script>
 	<title>A propos</title>
 </head>
 <body>
 	<header>
-		<a href="/">
-			<span class="left-arrow">&larr;</span> 
-			<span> Return to game </span>
+		<a href="/" class="back-link"> 
+			Return to game
 		</a>
+		<div class="select-container">
+			<label for="language" id="selector-label"></label>
+			:
+			<select id="language" onchange="updateAbout();">
+				<option value="fr">Français</option>
+				<option value="en">English</option>
+			</select>
+		</div>
 	</header>
 	<main>
-		<h1>A propos</h1>
-		<p>Blobby Blob </p>
+		<section class="about">
+			<h2 id="about-title">
+				
+			</h2>
+			<p id="about-description">
+				
+			</p>
+		</section>
+
+		<section>
+			<h2>Team</h2>
+			<ul>
+				<li>Maxence Toth</li>
+				<li>Donatien Hochart</li>
+				<li>Nicolas Bernon</li>
+				<li>Benoit Sacleux</li>
+				<li>Steven Averlant</li>
+			</ul>
+		</section>
 	</main>
+
 </body>
 </html>
