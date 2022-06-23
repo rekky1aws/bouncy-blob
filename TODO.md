@@ -13,3 +13,4 @@
 + Animer l'oiseau avec des rotations.
 + Faire en sorte que le son overlap (qu'il puisse se jouer plusieurs fois en meme temps)
 + Refaire les graphismes
++ Mettre un index sur la div message pour passer au dessus
