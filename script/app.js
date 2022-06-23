@@ -138,6 +138,7 @@ let leftSpeed = 0;
 
 function moveLeft() {
     axeX -= leftSpeed;
+    pipeCtx.clearRect(0,0,pipeCanvas.width, pipeCanvas.height);
     drawPipes(axeX, -300);
     scroling()
 }
