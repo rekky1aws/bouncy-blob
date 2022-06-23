@@ -15,6 +15,10 @@ footer {
     border-top-right-radius: 15px;
 }
 
+canvas {
+    border: 3px solid red;
+}
+
 
 /* Classes */
 .about-link {
@@ -34,9 +38,10 @@ footer {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    z-index: 0;
 }
 
-.hiden {
+.hidden {
     display: none;
 }
 
@@ -94,6 +99,18 @@ footer {
 
 /* IDs */
 
+#bird-canvas {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: calc(33.45% - 70px);
+}
+
+#pipe-canvas {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+}   
 
 /* media query */
 
