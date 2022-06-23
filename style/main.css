@@ -14,11 +14,29 @@ footer {
 	border-top-right-radius: 15px;
 }
 
+
 /* Classes */
 .background {
 	background-image: url('/media/images/background.png');
-	height: 300px;
-	width: 300px;
+	height: 100vh;
+	width: 100wv;
+	-webkit-background-size:cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.hiden {
+	display: none;
+}
+
+.bird {
+	height: 100px;
+	width: 130px;
+	position: fixed;
+	top: 40vh;
+	left: 30vw;
+	z-index:100;
 }
 
 .up-arrow {
