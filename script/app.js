@@ -40,21 +40,37 @@ const pipeCtx = pipeCanvas.getContext("2d");
 // console.log(birdCtx); // DEBUG
 // console.log(pipeCtx); // DEBUG
 
+// CONSTANTES GLOBALES
 // On génère nos médias afin de pouvoir les importer dans les canvas.
-// Images
+    // Images
 const birdImg = new Image();
 const pipeDown = new Image();
 const pipeUp = new Image();
 
 // On leur associe les bonnes sources.
-// Images
 birdImg.src = "/media/images/bird.png";
 pipeDown.src = "/media/images/pipe-down.png";
 pipeUp.src = "/media/images/pipe-up.png";
 
+    // Numbers
+// Valeurs à modifier pour regler la taille et l'espacement des tuyaux.
+const xSize = 700;
+const ySize = 700;
+const gap = 350;
+
+// Constante permettant de définir le temps d'apparition entre chaque paire de tuyaux.
+const timeGap = 3000;
+
+// VARIABLES GLOBALES.
 let birdPosition = (birdCanvas.height / 2) - (birdImg.height / 2);
 let downSpeed = 0;
 let gameStarted = false;
+let leftSpeed = 0;
+let pipeArr = [
+    new Pipe(-300)
+];
+
+console.log(pipeArr);
 
 // Initialisation de la taille du canvas.
 function sizeCanvas() {
@@ -75,15 +91,10 @@ function drawBird(y) {
     birdCtx.drawImage(birdImg, 5, y, 130, 100);
 }
 
-function drawPipes(x, y) {
-    // Valeurs à modifier pour regler la taille et l'espacement des tuyaux.
-    const xSize = 700;
-    const ySize = 700;
-    const gap = 350 + ySize;
-
+function drawPipes(pipe) {
     // On dessine les deux tuyaux avec l'espace entre les deux
-    pipeCtx.drawImage(pipeUp, x, y, xSize, ySize);
-    pipeCtx.drawImage(pipeDown, x, gap + y, xSize, ySize);
+    pipeCtx.drawImage(pipeUp, pipe.x, pipe.y, xSize, ySize);
+    pipeCtx.drawImage(pipeDown, pipe.x, gap + pipe.y + ySize, xSize, ySize);
 }
 
 // Joue un son
@@ -98,7 +109,7 @@ function playSound(vol) {
     flySound.play();
 }
 
-// Fonction faisant bouger l'oiseau
+// Fonctions faisant bouger l'oiseau.
 function moveUp() {
     // Si la fonction startGame a déja été executée.
     if (gameStarted) {
@@ -115,6 +126,26 @@ function moveDown() {
     gravite();
 }
 
+// Les fonctions "moveLeft" et "scroling" permettent de faire avancer les pipes
+function moveLeft() {
+    pipeCtx.clearRect(0, 0, pipeCanvas.width, pipeCanvas.height);
+    pipeArr.forEach( (element) => {
+        element.x -= leftSpeed;
+        drawPipes(element);
+        if (element.x < (window.screen.width) * -1) {
+            pipeArr.shift();
+        }
+    });
+    scroling();
+    // console.log(pipeArr);
+}
+
+function scroling() {
+    if (leftSpeed < 5) {
+        leftSpeed++;
+    }
+}
+
 // Fonction permettant de faire tomber l'oiseau avec une légère accélération au début.
 function gravite() {
     if (downSpeed < 8) {
@@ -126,29 +157,41 @@ function gravite() {
 function startGame() {
     // On indique dans notre variable globale que le jeu a commencé.
     gameStarted = true;
+
     // On cache le message qui nous indique comment jouer.
     document.getElementById('tuto').style.display = "none";
+
     // On fait en sorte que l'oiseau tombe.
     setInterval(moveDown, 30);
+
     // Exècute la fonction "moveLeft" avec un interval
     setInterval(moveLeft, 30);
+
+    // Genere des tuyaux à chaque intervalle de timeGap ms
+    setInterval(generatePipe, timeGap);
 }
 
-// Les fonctions "moveLeft" et "scroling" permettent de faire avancer les pipes
-let axeX = 1200;
-let leftSpeed = 0;
-
-function moveLeft() {
-    axeX -= leftSpeed;
-    pipeCtx.clearRect(0, 0, pipeCanvas.width, pipeCanvas.height);
-    drawPipes(axeX, -300);
-    scroling()
-}
-
-function scroling() {
-    if (leftSpeed < 5) {
-        leftSpeed++;
+function randInt (min, max)
+{
+    if (min !== Math.floor(min) || max !== Math.floor(max))
+    {
+        console.warn("You should use integer, the funtion will retuen a result between", Math.floor(min), "and", Math.floor(max));
     }
+
+    if (min === max) {
+        console.error("Parameters can't be equal");
+        return undefined;
+    } else if (max < min) {
+        console.error("First parameter should be less than the second");
+        return undefined;
+    } else {
+        return Math.floor(min) + Math.floor(Math.random()*(max-min))
+    }
+}
+
+function generatePipe(minY = 50 - ySize, maxY = window.innerHeight - ySize - gap - 50)
+{
+    pipeArr.push(new Pipe(randInt(minY, maxY)));
 }
 
 // Fonction qui s'execute au chargement de la page.
@@ -161,5 +204,7 @@ function loader() {
     // drawPipes(500, -300);
     // drawPipes(700, -200);
 
-    drawPipes(axeX, -300);
+    pipeArr.forEach( (element) => {
+        drawPipes(element);
+    })
 }
