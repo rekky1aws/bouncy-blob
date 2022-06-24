@@ -15,6 +15,7 @@
 
 ## Bonus
 + Animer l'oiseau avec des rotations.
-+ Faire en sorte que le son overlap (qu'il puisse se jouer plusieurs fois en meme temps)
+<!-- + Faire en sorte que le son overlap (qu'il puisse se jouer plusieurs fois en meme temps) -->
++ Ajout d'un slide pour ajuster le volume (function déjà prévu pour ça)
 + Refaire les graphismes
 <!-- + Mettre un index sur la div message pour passer au dessus -->
