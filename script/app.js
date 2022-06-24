@@ -46,17 +46,11 @@ const birdImg = new Image();
 const pipeDown = new Image();
 const pipeUp = new Image();
 
-// Sons
-const flySound = new Audio();
-
 // On leur associe les bonnes sources.
 // Images
 birdImg.src = "/media/images/bird.png";
 pipeDown.src = "/media/images/pipe-down.png";
 pipeUp.src = "/media/images/pipe-up.png";
-
-// Sons
-flySound.src = "/media/sounds/fly.mp3";
 
 let birdPosition = (birdCanvas.height / 2) - (birdImg.height / 2);
 let downSpeed = 0;
@@ -92,12 +86,23 @@ function drawPipes(x, y) {
     pipeCtx.drawImage(pipeDown, x, gap + y, xSize, ySize);
 }
 
+// Joue un son
+function playSound(vol) {
+    // Nouveau objet son
+    const flySound = new Audio();
+    // Source son
+    flySound.src = "/media/sounds/fly.mp3";
+    // Volume du son
+    flySound.volume = vol;
+    // Action de jouer un son
+    flySound.play();
+}
+
 // Fonction faisant bouger l'oiseau
 function moveUp() {
     // Si la fonction startGame a déja été executée.
     if (gameStarted) {
-        flySound.play();
-
+        playSound(1);
         birdPosition -= 50;
         downSpeed = 0;
         drawBird(birdPosition);
@@ -125,20 +130,17 @@ function startGame() {
     document.getElementById('tuto').style.display = "none";
     // On fait en sorte que l'oiseau tombe.
     setInterval(moveDown, 30);
-    // --------------------------- NICO ----------------------------------------
     // Exècute la fonction "moveLeft" avec un interval
     setInterval(moveLeft, 30);
-    // -------------------------------------------------------------------------
 }
 
-// ------------------------------- NICO ----------------------------------------
 // Les fonctions "moveLeft" et "scroling" permettent de faire avancer les pipes
 let axeX = 1200;
 let leftSpeed = 0;
 
 function moveLeft() {
     axeX -= leftSpeed;
-    pipeCtx.clearRect(0,0,pipeCanvas.width, pipeCanvas.height);
+    pipeCtx.clearRect(0, 0, pipeCanvas.width, pipeCanvas.height);
     drawPipes(axeX, -300);
     scroling()
 }
@@ -148,7 +150,6 @@ function scroling() {
         leftSpeed++;
     }
 }
-// -----------------------------------------------------------------------------
 
 // Fonction qui s'execute au chargement de la page.
 function loader() {
