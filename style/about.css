@@ -1,51 +1,104 @@
+/* Import et Variables*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* Palette de couleur */
+:root {
+	--accent-color: #FFD52E;
+	--dark-bg-color: #002A32;
+	--light-bg-color: #D9F7FA;
+
+	--dark-text-color: #D9F7FA;
+	--light-text-color: #002A32;
+
+	--success-color: #44CF6C;
+	--error-color: #D33F49;
+}
+
+/* Reset des marges */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Tags */
+body {
+	font-family: 'Poppins', sans-serif;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 2rem;
+}
+
+main {
+	margin: 2rem;
+}
+
 a {
 	text-decoration: none;
 	font-weight: bold;
 }
 
-a:visited {
-	color: black;
+ul {
+	list-style: none;
+	border-left: 2px solid #FFD52E;
 }
 
-body {
-	margin: 0;
-	font-family: Helvetica, sans-serif;
+li {
+	margin-left: 1rem;
 }
 
-header {
-	height: 5vh;
-	display: flex;
-	justify-content: space-between;
-	align-content: center;
-	padding: 25px;
-	background-color: aquamarine;
+/* IDs */
+#language {
+	border: none;
+	background-color: #FFD52E;
+	color: #002A32;
+	padding: .4rem;
+	border-radius: 8px;
 }
 
-header > * {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+#language:hover {
+	cursor: pointer;
 }
 
-main {
-	margin: 25px;
-}
-
+/* Classes */
 .back-link {
-	color: white;
-	padding: 5px 15px;
-	border-radius: 25px;
-	background-color: mediumseagreen;
+	padding: .3rem 1rem;
+	border-radius: 8px;
+	background-color: transparent;
+	border: 2px solid #FFD52E;
+}
+
+.back-link:hover {
+	transition: all .2s ease-in-out;
+	background-color: #FFD52E;
+	color: #002A32;
 }
 
 .select-container {
-	gap: 5px;
-	font-weight: bold;
+	font-weight: 400;
 }
 
-#language {
-	border:none;
-	background-color: white;
-	padding: 5px;
-	border-radius: 25px;
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: var(--dark-bg-color);
+		color: var(--dark-text-color);
+	}
+
+	.back-link {
+		color: var(--dark-text-color);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	body {
+		background-color: var(--light-bg-color);
+		color: var(--light-text-color);
+	}
+
+	.back-link {
+		color: var(--light-text-color);
+	}
 }

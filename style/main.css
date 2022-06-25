@@ -1,36 +1,40 @@
 /* Import et Variables*/
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 /* Tags HTML5 */
-
 body {
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 footer {
     z-index: 10;
     position: absolute;
     bottom: 0;
-    background-color: #D9F7FA;
-    padding: 10px;
+    background-color: #FFD52E;
+    padding: .6rem;
     border-top-right-radius: 15px;
 }
-
 
 /*canvas {
     border: 3px solid red;
 }*/
 
-
-/* Classes */
-
-.about-link {
-    text-decoration: none;
-    font-family: sans-serif;
-    color: #002A32;
-    font-weight: bold;
+/* IDs */
+#bird-canvas {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: calc(33.45% - 70px);
 }
 
+#pipe-canvas {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+}
+
+/* Classes */
 .background {
     background-image: url('/media/images/background.png');
     background-position: bottom;
@@ -73,10 +77,10 @@ footer {
 }
 
 .message-style {
-    background: white;
-    padding: 30px;
+    background-color: white;
+    padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 9px;
+    border-radius: 8px;
     z-index: 100;
 }
 
@@ -100,25 +104,14 @@ footer {
     font-weight: bold;
 }
 
-
-/* IDs */
-
-#bird-canvas {
-    position: fixed;
-    z-index: 20;
-    top: 0;
-    left: calc(33.45% - 70px);
+.about-link {
+    text-decoration: none;
+    font-family: sans-serif;
+    color: #002A32;
+    font-weight: bold;
 }
 
-#pipe-canvas {
-    position: fixed;
-    z-index: 10;
-    top: 0;
-}
-
-
-/* media query */
-
+/* Media query */
 @media only screen and (max-width: 1080px) {
     .message {
         font-size: 30px;
