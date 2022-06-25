@@ -8,9 +8,10 @@ body {
 }
 
 footer {
+    z-index: 10;
     position: absolute;
     bottom: 0;
-    background-color: #EEE;
+    background-color: #D9F7FA;
     padding: 10px;
     border-top-right-radius: 15px;
 }
@@ -26,7 +27,7 @@ footer {
 .about-link {
     text-decoration: none;
     font-family: sans-serif;
-    color: black;
+    color: #002A32;
     font-weight: bold;
 }
 
