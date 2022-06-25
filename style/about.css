@@ -81,6 +81,10 @@ li {
 	font-weight: 400;
 }
 
+.about {
+	margin-block-end: 2rem;
+}
+
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: var(--dark-bg-color);
