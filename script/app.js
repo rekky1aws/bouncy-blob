@@ -1,7 +1,7 @@
 // Si une touche est pressé, on peut savoir laquelle c'est
 document.addEventListener("keydown", (e) => {
     // On vérifie le code de la touche pressée.	
-    //console.log(e.code);
+    // console.log(e.code);
 
     // En fonction de la touche pressée, on execute ce a quoi ca correspond.
     switch (e.code) {
@@ -42,7 +42,7 @@ const pipeCtx = pipeCanvas.getContext("2d");
 
 // CONSTANTES GLOBALES
 // On génère nos médias afin de pouvoir les importer dans les canvas.
-    // Images
+// Images
 const birdImg = new Image();
 const pipeDown = new Image();
 const pipeUp = new Image();
@@ -52,7 +52,7 @@ birdImg.src = "/media/images/bird.png";
 pipeDown.src = "/media/images/pipe-down.png";
 pipeUp.src = "/media/images/pipe-up.png";
 
-    // Numbers
+// Numbers
 // Valeurs à modifier pour regler la taille et l'espacement des tuyaux.
 const xSize = 700;
 const ySize = 700;
@@ -109,11 +109,13 @@ function playSound(vol) {
     flySound.play();
 }
 
+let volume = document.getElementById('volume');
+
 // Fonctions faisant bouger l'oiseau.
 function moveUp() {
     // Si la fonction startGame a déja été executée.
     if (gameStarted) {
-        playSound(1);
+        playSound(volume.value);
         birdPosition -= 50;
         downSpeed = 0;
         drawBird(birdPosition);
@@ -129,7 +131,7 @@ function moveDown() {
 // Les fonctions "moveLeft" et "scroling" permettent de faire avancer les pipes
 function moveLeft() {
     pipeCtx.clearRect(0, 0, pipeCanvas.width, pipeCanvas.height);
-    pipeArr.forEach( (element) => {
+    pipeArr.forEach((element) => {
         element.x -= leftSpeed;
         drawPipes(element);
         if (element.x < (window.screen.width) * -1) {
@@ -171,10 +173,8 @@ function startGame() {
     setInterval(generatePipe, timeGap);
 }
 
-function randInt (min, max)
-{
-    if (min !== Math.floor(min) || max !== Math.floor(max))
-    {
+function randInt(min, max) {
+    if (min !== Math.floor(min) || max !== Math.floor(max)) {
         console.warn("You should use integer, the funtion will retuen a result between", Math.floor(min), "and", Math.floor(max));
     }
 
@@ -185,12 +185,11 @@ function randInt (min, max)
         console.error("First parameter should be less than the second");
         return undefined;
     } else {
-        return Math.floor(min) + Math.floor(Math.random()*(max-min))
+        return Math.floor(min) + Math.floor(Math.random() * (max - min))
     }
 }
 
-function generatePipe(minY = 50 - ySize, maxY = window.innerHeight - ySize - gap - 50)
-{
+function generatePipe(minY = 50 - ySize, maxY = window.innerHeight - ySize - gap - 50) {
     pipeArr.push(new Pipe(randInt(minY, maxY)));
 }
 
@@ -204,7 +203,7 @@ function loader() {
     // drawPipes(500, -300);
     // drawPipes(700, -200);
 
-    pipeArr.forEach( (element) => {
+    pipeArr.forEach((element) => {
         drawPipes(element);
     })
 }
