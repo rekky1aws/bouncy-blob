@@ -8,9 +8,10 @@
 + Système de hitboxes
 + Scoring
 + Systeme de High Score de session (high score qui se réinitialise lors d'un refresh de page)
-+ Integrer la charte graphique faite par Steven
+<!-- + Integrer la charte graphique faite par Steven -->
 + Message récapitulatif de la partie a la mort
 <!-- + Faire le revenir le pipe du bas -->
+<!-- + Ajout du support mobile -->
 
 ## Bonus
 + Animer l'oiseau avec des rotations.

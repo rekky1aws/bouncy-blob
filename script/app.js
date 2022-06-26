@@ -1,3 +1,44 @@
+// CONSTANTES GLOBALES
+// On génère nos médias afin de pouvoir les importer dans les canvas.
+// Images
+const birdImg = new Image();
+const pipeDown = new Image();
+const pipeUp = new Image();
+
+// On leur associe les bonnes sources.
+birdImg.src = "/media/images/bird.png";
+pipeDown.src = "/media/images/pipe-down.png";
+pipeUp.src = "/media/images/pipe-up.png";
+
+// Récupération des canvas dans le HTML
+const birdCanvas = document.getElementById('bird-canvas');
+const pipeCanvas = document.getElementById('pipe-canvas');
+
+// On récupère le contexte 2d de nos deux canvas.
+const birdCtx = birdCanvas.getContext("2d");
+const pipeCtx = pipeCanvas.getContext("2d");
+
+// console.log(birdCtx); // DEBUG
+// console.log(pipeCtx); // DEBUG
+
+// Numbers
+// Valeurs à modifier pour regler la taille et l'espacement des tuyaux.
+const xSize = 700;
+const ySize = 700;
+const gap = 350;
+
+// Constante permettant de définir le temps d'apparition entre chaque paire de tuyaux.
+const timeGap = 3000;
+
+// VARIABLES GLOBALES.
+let birdPosition = (birdCanvas.height / 2) - (birdImg.height / 2);
+let downSpeed = 0;
+let gameStarted = false;
+let leftSpeed = 0;
+let pipeArr = [
+    new Pipe(-300)
+];
+
 // Si une touche est pressé, on peut savoir laquelle c'est
 document.addEventListener("keydown", (e) => {
     // On vérifie le code de la touche pressée.	
@@ -29,48 +70,14 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-// Récupération des canvas dans le HTML
-const birdCanvas = document.getElementById('bird-canvas');
-const pipeCanvas = document.getElementById('pipe-canvas');
+document.addEventListener("click", () =>{
+    if (!gameStarted) {
+        startGame(); 
+    } else {
+        moveUp();
+    }
+});
 
-// On récupère le contexte 2d de nos deux canvas.
-const birdCtx = birdCanvas.getContext("2d");
-const pipeCtx = pipeCanvas.getContext("2d");
-
-// console.log(birdCtx); // DEBUG
-// console.log(pipeCtx); // DEBUG
-
-// CONSTANTES GLOBALES
-// On génère nos médias afin de pouvoir les importer dans les canvas.
-// Images
-const birdImg = new Image();
-const pipeDown = new Image();
-const pipeUp = new Image();
-
-// On leur associe les bonnes sources.
-birdImg.src = "/media/images/bird.png";
-pipeDown.src = "/media/images/pipe-down.png";
-pipeUp.src = "/media/images/pipe-up.png";
-
-// Numbers
-// Valeurs à modifier pour regler la taille et l'espacement des tuyaux.
-const xSize = 700;
-const ySize = 700;
-const gap = 350;
-
-// Constante permettant de définir le temps d'apparition entre chaque paire de tuyaux.
-const timeGap = 3000;
-
-// VARIABLES GLOBALES.
-let birdPosition = (birdCanvas.height / 2) - (birdImg.height / 2);
-let downSpeed = 0;
-let gameStarted = false;
-let leftSpeed = 0;
-let pipeArr = [
-    new Pipe(-300)
-];
-
-console.log(pipeArr);
 
 // Initialisation de la taille du canvas.
 function sizeCanvas() {

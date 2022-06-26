@@ -85,6 +85,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 100vw;
 }
 
 .volume,
@@ -154,6 +155,7 @@ footer div.about {
         font-size: 30px;
         top: 20%;
         white-space: nowrap;
+        margin-top: 20vh;
     }
     .score {
         font-size: 8vh;
@@ -165,4 +167,16 @@ footer div.about {
     /* .pipe_sprite{
 		width: 14vw;
 	} */
+}
+
+@media only screen and (max-width: 600px) {
+    .message {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .message {
+        font-size: 15px;
+    }
 }
